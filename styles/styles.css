@@ -1,0 +1,1016 @@
+:root{
+    --purple-light:#dfb6be;
+    --purple-dark: #59427a;
+    --purple: #bd6bb7;
+    --purple-extra-light: #d5c7e8;
+    --blue-soft-light: #e5ecef;
+    --gray-soft-light: #f0efed;
+    --light: #ffffff;
+    --dark: #333;
+    --font-sans-serif: sans-serif;
+    --font-arial: Arial;
+}
+html{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: var(--font-family);
+    scroll-behavior: smooth;
+}
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+    margin: 0;
+}
+body{
+    background-color: var(--purple-light);
+    font-family: var(--font-sans-serif);
+    /* overflow-x: hidden; */
+}
+
+
+/* ****************HEADER*************** */
+/* *************MOBILE-375PX************* */
+/* Le doy altura al header y espacio al top*/
+.menu__second{
+    display: none;
+}
+
+header{
+    height: 100vh;
+    padding-top: 5rem;
+}
+
+
+/* MENU */
+/* Doy estilos al input tipo checkbox que esta oculto */
+.off-canvas-btn{
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 999;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    opacity: 0;
+}
+/* Trabajo con la rayita principal de la burger */
+.off-canvas-burger{
+    position: fixed;
+    top: 3.4rem;
+    right: 1rem;
+    z-index: 998;
+    width: 2.5rem;
+    height: .5rem;
+    background-color: var(--dark);
+    border-radius: .3rem;
+    transform: rotate(0deg) translate(0,-1.2rem);
+    transform-origin: top left;
+    transition: transform 0.5s ease, background-color 500ms ease;
+}
+/* Creo las 2 rayitas que forman la burger */
+.off-canvas-burger::before,
+.off-canvas-burger::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: .5rem;
+    background-color: var(--dark);
+    border-radius: .3rem;
+    transition: transform 500ms ease;
+}
+/* Muevo la rayita #1 de la burger */
+.off-canvas-burger::before{
+    transform: rotate(0deg) translate(0,-.8rem);
+}
+/* Muevo la rayita #3 de la burger */
+.off-canvas-burger::after{
+    transform: rotate(0deg) translate(0, .3rem);
+}
+/* Cuando hago checked en el input, hago transparente a la rayita principal de la burger. */
+.off-canvas-btn:checked + .off-canvas-burger{
+    background-color: transparent;
+}
+/* Cuando hago checked en el input, roto y traslado la rayita #1 */
+.off-canvas-btn:checked + .off-canvas-burger::before{
+    transform: rotate(45deg) translate(0, -0.1rem);
+}
+/* Cuando hago checked en el input, roto y traslado la rayita #3 */
+.off-canvas-btn:checked + .off-canvas-burger::after{
+    transform: rotate(-45deg) translate(.4rem, -.4rem);
+}
+/* Reseteo el padding del container ul */
+ul{
+    padding: 0;    
+}
+/* Doy estilos al menu de navegacion */
+.off-canvas-menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 2rem;
+    z-index: 997;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark);
+    transition: transform 500ms ease-in-out;
+    transform: translate(-100%, 0);
+}
+/* Cuando el input este checkeado, traslada el menu a su posicion original */
+.off-canvas-btn:checked ~ .off-canvas-menu{
+    transform: translate(0, 0);
+}
+/* Doy estilos a la ul, que es el container del menu */
+.off-canvas-menu-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* Doy estilos a los li */
+/* Nota, le defini un ancho para que los bordes sean iguales entre todas */
+.off-canvas-link-list{
+    border-bottom: thin solid var(--purple);
+    text-align: center;
+    width: 11rem;
+    font-size: 1.5rem;
+    transition: background-color 300ms ease;
+    list-style-type: none;
+    padding: 2rem;
+}
+.off-canvas-link-list:first-child{
+    border-top: thin solid var(--purple);
+}
+.off-canvas-link-list:hover{
+    background-color: var(--purple);
+
+}
+/* Doy estilo a las anclas */
+.off-canvas-link-list a{
+    color: var(--blue-soft-light);
+    text-decoration: none;
+}
+
+/* Le doy estilos a la imagen principal. My picture profile. */
+.header__picture img{
+    max-width: 70%;
+    border-radius: 1rem;
+    border: .5rem solid var(--gray-soft-light);
+    display: block;
+    margin: 0 auto .5rem auto;
+
+}
+/* Hago flexible al div que contiene el h1, p, a. Lo trabajo como columna y lo centro  */
+.header__text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Le doy estilo al h1, que es mi presentacion */
+.header__text h1{
+    font-size: 3.2rem;
+    color: var(--purple-dark);
+    margin-bottom: 1rem;
+}
+/* Hago bajar al span del h1 */
+.header__text span{
+    display: block;
+}
+/* Estilo al "web developer" */
+.header__text h2{
+    font-size: 2.2rem;
+    color: var(--dark);
+}
+/* Le doy estilo al p del header */
+.header__text p{
+    margin: .7rem 0 1.5rem 0;
+    /* color: var(--purple-dark); */
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+/* Le doy estilos al boton del header(a) */
+.header__text a{
+    background-color: var(--purple-dark);
+    color: var(--light);
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: var(--font-arial);
+    letter-spacing: .1rem;    
+}
+
+
+/* ****************MAIN*************** */
+/* ****************PORTFOLIO*************** */
+
+/* Le doy estilos a la section del portfolio (El contenedor) */
+.portfolio{
+    background-color: var(--purple-dark);
+    display: flex;
+    flex-direction: column;
+    color: var(--gray-soft-light);
+    text-align: center;
+}
+.portfolio h2{
+    margin: 2.5rem 0 1rem;
+    font-size: 3rem;
+    letter-spacing: .09rem;
+}
+.portfolio p{
+    padding: 0 3rem 2rem 3rem;
+    line-height: 1.3rem;
+}
+
+/* Le doy estilos al article que es contenedor de los proyectos  */
+.porfolio__projects{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 1rem;
+
+}
+/* Estilos al contenedor de la img */
+.porfolio__picture{
+    width: 300px;
+    background-color: var(--gray-soft-light);
+    border-radius: 1rem;
+    margin: 0 0 1.5rem 0;
+}
+/* Estilos a la img */
+.porfolio__picture img{
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+/* Estilos al contenedor de los textos */
+.porfolio__text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Estilos al titulo de los proyectos. */
+.porfolio__text h3{
+    padding: 0 0 1rem 0;
+    color: var(--purple-dark);
+}
+/* Estilos a la descripcion de los proyectos. */
+.porfolio__text p{
+    padding: 0 0 2rem 0;
+    color: var(--dark);
+}
+
+.skills__about-none{
+    display: none;
+}
+
+/* Ahora trabajo con la SECTION SKILLS que esta dentro de la section portfolio*/
+.skills{
+    margin-bottom: 4rem;
+}
+/* Titulo de los skills */
+.skills h2{
+    font-size: 3rem;
+    color: var(--gray-soft-light);
+}
+/* Hago flexible y fluido el container de cada div en donde estan las img */
+.skills-iconos{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+/* Le bajo el tamanio a las img de los iconos */
+.skills-iconos img{
+    width: 80px;
+}
+
+
+/* ****************ABOUT*************** */
+/* Estilos al about */
+.about{
+    background-color: var(--purple-dark);
+    color: var(--gray-soft-light);
+    border-radius: 1rem;
+    margin: 3rem 2rem;
+    padding: 3rem 2rem 4rem 2rem;
+    text-align: left;
+}
+.about h2{
+    font-size: 3rem;
+    padding-bottom: 1.5rem;
+}
+.about p{
+    line-height: 1.5rem;
+    padding: 0 .5rem 3.5rem 0;
+}
+.about a{
+    background-color: var(--purple);
+    color: var(--light);
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: var(--font-arial);
+    letter-spacing: .1rem;
+}
+
+/* ****************FORMULARIO*************** */
+/* Quito el formulario que no es para esta media query */
+.form__none{
+    display: none;
+}
+/* Hago flexible todo el contenedor del formulario y lo centro. */
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+/* Le doy estilos a la primera parte del formulario que son los textos. El titulo y el parrafo. */
+.form__text h2{
+    font-size: 3rem;
+    margin-bottom: .5rem;
+    color: var(--purple-dark);
+}
+.form__text p{
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+    color: var(--purple-dark);
+    font-weight: bold;
+}
+/* Hago flexible al container del formulario para ubicar los inputs */
+.form__container{
+    display: flex;
+    flex-flow: column;
+    padding: 2rem 2.5rem 1rem 2.5rem;
+    width: 365px;
+    /* max-width: 500px; */
+}
+/* Estilos a los inputs */
+.form__container input{
+    border: none;
+    padding: .8rem 0 .8rem .5rem;
+    margin-bottom: 1rem;
+    background-color: var(--gray-soft-light);
+    border-radius: .5rem;
+    caret-color: var(--purple-dark);
+    color: var(--purple-dark);
+}
+/* Estilos al boton que es un input tipo submit. */
+.form__container input[type="submit"]{
+    background-color: var(--purple-dark);
+    color: var(--light);
+    font-family: var(--font-arial);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+}
+/* Estoy quitando el outline que aparece a hacer click en el input. */
+.form input:focus{
+    outline: none;
+}
+
+/* HAGO INVISIBLE EL FORM - FOOTER DEL 768PX */
+.form__footer-none{
+    display: none;
+}
+
+/* CONTACT  */
+/* Hago flexible el section del correo que esta debajo del form. */
+.contact{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+/*  */
+.contact div{
+    display: flex;
+    justify-content: center;
+    margin-bottom: .5rem;
+}
+
+/* Aumento el tamanio de las img de los enlaces */
+.contact__links img:first-child,
+.contact__links img:last-child{
+    width: 30px;
+}
+/* Icono del correo */
+.contact img{
+    width: 20px;
+    margin-right: .5rem;
+}
+/* Estilo al area de contacto personal */
+.contact p{
+    color: var(--purple-dark);
+    font-weight: bold;
+}
+
+
+
+/* ****************FOOTER*************** */
+/* Le doy estilos al footer container */
+footer{
+    background-color: var(--dark);
+    color: var(--blue-soft-light);
+    text-align: center;
+}
+/* Le doy una altura con paddings verticales */
+footer p{
+    padding: 2rem 0;
+}
+/* Estilos al ancla */
+.footer__link{
+    color: var(--purple);
+    padding-left: .3rem;
+}
+
+
+
+/* ***********************576px*************************** */
+
+/* Small devices (landscape phones, 576px-36em and up) */
+@media (min-width:36em){
+    /* HEADER ********* */
+    /* Le doy altura al header y ajusto el padding top*/
+    header{
+        height: 135vh;
+        padding-top: 1rem;
+    }
+    /* Bajo un poco la img del header */
+    .header__picture{
+        margin-top: 4rem;
+    }
+    /* Aumento el tamano y centro el h1 */
+    .header__text h1{
+        font-size: 5rem;
+    }
+
+    /* PORTFOLIO ************* */
+    /* Titulo del portfolio */
+    .portfolio__text h2{
+        margin-bottom: 2rem;
+    }
+    /* Le doy un width menor a las img para ubicarlas una al lado de la otra */
+    .porfolio__picture{
+        width: 250px;
+    }
+
+    /* SKILLS */
+    /* Le doy un poco de margin laterales a las img y bajo el ancho de las mismas */
+    .skills-iconos img{
+        margin: 0 .5rem;
+        width: 80px;
+    }
+    /* Elimino el padding por defecto de los p. */
+    .skills p{
+        padding: 0;
+    }
+    /* Quito el section de skills-about none */
+    .skills__about-none{
+        display: none;
+    }
+
+    /* FORMULARIO ************ */
+    /* Centro el formulario y ajusto el ancho. */
+    .form__container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 465px;
+    }
+
+    /* FOOTER ************** */
+    /* Le doy un poco mas de padding a los lados al primer parrafo */
+    footer p:first-child{
+        padding: 2rem 3rem;
+    }
+    /* Agrando el logo */
+    footer img{
+        width: 6.5rem;
+    }
+}
+
+/* ***********************768px*************************** */
+
+/* Medium devices (tablets, 768px-48em and up) */
+@media (min-width:48em){
+    /* Hago desaparecer el menu que es exclusivo de las medias mas pequenias. */
+    .menu__first{
+        display: none;
+    }
+    /* Hago aparecer el menu diseniado para la media de 768px en adelante */
+    .menu__second{
+        display: flex;
+    }
+
+    /* HEADER ***** */
+    /* Aumento la altura del header */
+    header{
+        height: 145vh;
+    }
+    /* Reduzco un poco el tamano de la img */
+    header img{
+        width: 450px;
+    }
+    /* PORTFOLIO ****** */
+    /* Le doy mas separacion en el bottom */
+    .portfolio{
+        padding-bottom: 2rem;
+    }
+    /* SKILLS - ABOUT *********** */
+    /* Quito los skills de los media queries anteriores de esta media query. */
+    .skills{
+        display: none;
+    }
+    /* Hago flexible el container de skills y about y los separo entre si. */
+    .skills__about-none{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin: 4rem 3rem;
+    }
+    /* Hago flexible skills y le doy estilos. */
+    .skills-none{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--purple-dark);
+        color: var(--gray-soft-light);
+        width: 250px;
+        border-radius: 1rem;
+    }
+    /* Estilos al titulo de skills */
+    .skills-none h2{
+        font-size: 3rem;
+    }
+    /* Le doy estilos internos a cada uno de los iconos. */
+    .skills__iconos-none{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+    /* Centro los textos debajos de los iconos */
+    .skills__iconos-none p{
+        text-align: center;
+    }
+    /* Le doy margin a los div que contienen los iconos */
+    .skills__iconos-none div{
+        margin: .5rem 1.5rem;
+    }
+    /* Ajusto el tamano de los iconos */
+    .skills__iconos-none img{
+        width: 50px;
+    }
+    
+
+    /* Hago flexible el contenedor del about y le doy estilos.*/
+    .about-none{
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        color: var(--purple-dark);
+    }
+    /* Estilos al titulo */
+    .about-none h2{
+        font-size: 3rem;
+        margin: 2rem 0 1rem 0;
+    }
+    /* Estilos al parrafo */
+    .about-none p{
+        margin-bottom: 3rem;
+        line-height: 1.5rem;
+        text-align: left;
+    }
+    /* Estilos al ancla. */
+    .about-none a{
+        background-color: var(--purple-dark);
+        color: var(--light);
+        padding: 1rem 1.2rem;
+        width: 130px;
+        border-radius: .5rem;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: var(--font-arial);
+        letter-spacing: .1rem;
+    }
+    
+    /* Quito el about */
+    .about{
+        display: none;
+    }
+    /* FORM ***** */
+    /* Desaparezco el container del form en esta media query. */
+    .form{
+        display: none;
+    }
+    /* Aparezco el container del .form para esta media. */
+    .form__none{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--purple-dark);
+        padding-top: 2rem;
+    }
+    /* Centro el contenedor del titulo y frase */
+    .form__text-none{
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    /* Estilos al primer parrafo. */
+    .form__text-none p{
+        font-size: 1.1rem;
+        line-height: 1.2rem;
+        color: var(--gray-soft-light);
+        font-weight: bold;
+    }
+    /* Estilos al titulo. */
+    .form__text-none h2{
+        font-size: 3rem;
+        margin-bottom: .5rem;
+        color: var(--gray-soft-light);
+    }
+    /* Estilos al boton del formulario */
+    .form__container input[type="submit"]{
+        background-color: var(--purple)
+    }
+    /* Cambio el color al email y a la ubicacion */
+    .contact p{
+        color: var(--gray-soft-light);
+    }
+}
+
+/* ***********************992px-62em*************************** */
+
+/* Large devices (desktops, 992px-62em and up) */
+@media (min-width:62em){
+    /* Hago flexible el header, para hacerlo columna, para que menu quede encima del resto. */
+    header{
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding-top: 4rem ;
+    }
+    /* Al container .header que tiene el resto del header bajo el menu, lo pongo en fila y lo centro con respecto a la horizontal. */
+    .header{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    /* Ajusto el tamano de la img */
+    .header__picture img{
+        width: 550px;
+    }
+    /* Estilos al contenedor de h1,p y a. */
+    .header__text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+    /* Estilos al titulo. */
+    .header__text h1{
+        margin-left: -7rem;
+    }
+    /* Muevo a la izquierda el h2 y el texto */
+    .header__text h2,
+    .header__text p{
+        margin-left: -5rem;
+    }
+    /* Estilos al "boton" */
+    .header__text a{
+        background-color: var(--purple-dark);
+        margin-left: -4rem;
+    }
+    
+    /* PORTFOLIO******** */
+    /*  */
+    .portfolio{
+        padding-bottom: 3.5rem;
+    }
+    /*  */
+    .portfolio h2{
+        margin: 2rem 0 2rem 0;
+    }
+    /*  */
+    .portfolio p{
+        padding: 0 9rem 2rem 9rem;
+    }
+    /* SKILLS__ABOUT-NONE */
+    /* Le defino una altura fija a la seccion y centro los contenedores */
+    .skills__about-none{
+        justify-content: space-evenly;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    /* Pongo espacio entre el titulo y los iconos */
+    .skills-none h2{
+        margin-bottom: 1rem;
+    }
+    /* Le doy ancho y alto a la seccion de skills y about */
+    .skills-none,
+    .about-none{
+        width: 350px;
+    }
+    /* Acerco mas los contenedores entre si. */
+    .skills-none{
+        margin-right: -3rem;
+        padding: 3rem 0;
+    }
+    /* Aumento el espacio entre los divs que contienen los iconos. */
+    .skills__iconos-none div{
+        margin: .5rem 2.5rem;
+    }
+    /* Aumento el tamano de los iconos. */
+    .skills__iconos-none img{
+        width: 60px;
+    }
+    /* Centro con respecto a la vertical */
+    .about-none{
+        justify-content: center;
+    }
+    /* Ajusto la ubicacion del titulo */
+    .about-none h2{
+        margin: -2.5rem 0 3rem 0;
+    }
+    /* Aumento el tamanio de espacio lateral derecho. */
+    .about-none p{
+        padding-right: 5rem;
+    }
+    /* FORMULARIO__FOOTER-NONE ******** */
+    /* Aumento la altura del footer */
+    .form__footer-none{
+        height: 100vh;
+    }
+    /* Hago flexible el formulario para centrarlo con justify-content. */
+    .form-none{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    /* Centro en la vertical el footer */
+    .footer{
+        justify-content: center;
+    }
+    /* Le doy mas padding a los parrafos que estan dentro del footer. */
+    .footer p:first-child,
+    .footer p:nth-child(3){
+        padding: 3rem 4rem 2rem 4rem;
+    }
+}
+
+
+/* ***********************1200PX*************************** */
+
+/* - Extra large devices (large desktops, 1200-75em  and up) */
+@media (min-width:75em){
+    /* Aumento el tamanio de la fuente */
+    body{
+        font-size: 1.1rem;
+    }
+    /* HEADER *********** */
+    /* Le di mas padding left y lo movi mas a la izquierda. */
+    .header__text h1{
+        margin-left: -6.5rem;
+    }
+    /* Movi mas a la izquierda el parrafo */
+    .header__text p{
+        margin-left: -3rem;
+    }
+    /* Movi mas a la izquierda el "boton" */
+    .header__text a{
+        margin-left: -3rem;
+    }
+    /* PORTFOLIO ********* */
+    /* Le doy mas ancho al contenedor de cada tarjeta */
+    .porfolio__picture{
+        width: 275px;
+        margin: .5rem;
+    }
+    /* SKILLS-ABOUT */
+    /* Ajusto el ancho de los contenedores */
+    .skills-none,
+    .about-none{
+        width: 350px;
+    }
+    /* Acerco mas los skills y el about con respecto a la horizontal */
+    .skills-none{
+        margin-right: -6rem;
+    }
+    /* Acerco un poco mas el titulo con respecto a los iconos. */
+    .skills-none h2{
+        margin-bottom: .5rem;
+    }
+    /* Aumento el espaciado lateral entre los iconos */
+    .skills__iconos-none div{
+        margin: .5rem 3rem;
+    }
+    /* Aumento el tamano de los iconos. */
+    .skills__iconos-none img{
+        width: 65px;
+    }
+
+    /* FORM->1200PX */
+    /* Pongo en fila el contenedor de formulario y contact */
+    .form__none{
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding-bottom: 3rem;
+    }
+    /* Quito los margenes automaticos que tenia el formulario para centrarlo con respecto a contact. */
+    .form__container{
+        margin: 0;
+    }
+    /* Bajo el container de contact */
+    .contact{
+        margin: 7rem 0 0 -5rem;
+    }
+    /* Doy espacios inferiores entre los div de contact. */
+    .contact div{
+        margin-bottom: 1rem;
+    }
+    /* FOOTER ********* */
+    /* Bajo el texto con padding */
+    .footer{
+        padding-top: 4rem;
+    }
+    /* Le doy mas ancho al logo */
+    .footer img{
+        width: 7rem;
+    }
+}
+
+
+/* - Extra large devices (large desktops, 1450-90.625em and up) */
+@media (min-width:90.625em){
+    /* HEADER ************* */
+    /* Le doy mas altura al header */
+    header{
+        height: 100vh;
+    }
+    /* Agrando el tamanio de la img. */
+    .header__picture img{
+        width: 700px;
+    }
+    /* Muevo el titulo principal mas a la izquierda. */
+    .header__text h1{
+        margin-left: -8rem;
+    }
+    /* Muevo el titulo pequeno y el parrafo mas a la izquierda. */
+    .header__text h2,
+    .header__text p{
+        margin-left: -6rem;
+    }
+    /* Muevo el boton mas a la izquierda.*/
+    .header__text a{
+        background-color: var(--purple-dark);
+        margin-left: -6rem;
+    }
+    /* PORTFOLIO *********** */
+    /* Le doy margenes a las containers del portfolio. */
+    .porfolio__picture{
+        margin: 1rem .5rem 1rem .5rem;
+    }
+    /* Aumento los padding laterales del contenedor de portfolio, para ajustar los contenedores de cada proyecto. */
+    .porfolio__projects{
+        padding: 0 8rem;
+    }
+
+
+    /* SKILLS-ABOUT */
+    /* Ajusto el ancho de los contenedores */
+    .skills-none,
+    .about-none{
+        width: 375px;
+        padding: 4.5rem 0;
+    }
+    /* Acerco mas los skills y el about con respecto a la horizontal */
+    .skills-none{
+        margin-right: -12rem;
+    }
+    /* Aumento padding derecho interno del parrafo para ajustar el texto. */
+    .about-none p{
+        padding-right: 2rem;
+    }
+    /* Separo los iconos del titulo */
+    .skills__iconos-none{
+        margin-top: 1rem;
+    }
+    /* Aumento el tamanio de los iconos. */
+    .skills__iconos-none img{
+        width: 70px;
+    }
+
+    /* FORMULARIO */
+    /* Aumento el espaciado vertical */
+    .form__none{
+        padding: 3rem 0;
+    }
+    /* Aumento el ancho del formulario y acerco los contenedores entre si.*/
+    .form__container{
+        width: 510px;
+        margin-right: -8rem;
+    } 
+    /* Separo en la vertical el titulo y el texto del formulario. */
+    .form__text-none{
+        margin-bottom: 3rem;
+    }
+}
+
+
+/* - Extra-Extra large devices (large desktops, 1600-100em and up) */
+@media (min-width:100em){
+    /* Le doy mas altura al header */
+    header{
+        height: 110vh;
+    }
+    /* Aumento el tamanio de la img. */
+    .header__picture img{
+        width: 725px;
+    }
+    /* Muevo a la izquierda el titulo.*/
+    .header__text h1{
+        font-size: 5.5rem;
+        margin-left: -8.7rem;
+    }
+    /* Muevo los textos bajo el titulo a la izquierda. */
+    .header__text h2,
+    .header__text p,
+    .header__text a{
+        margin-left: -6.5rem;
+    }
+    /* HEADER ***** */
+    /* Aumento los espacios internos verticales del container del portfolio. */
+    .portfolio{
+        padding: 1.5rem 0 3.5rem 0;
+    }
+    /* Aumento el espacio entre el titulo y los proyectos. */
+    .portfolio__text{
+        margin-bottom: 1rem;
+    }
+    /* Aumento el espacio interno lateral del container propio de los proyectos para alinear los proyectos. */
+    .porfolio__projects{
+        padding: 0 13rem;
+    }
+    /* Aumento el tamanio de los proyectos y ajusto el margen interno.*/
+    .porfolio__picture{
+        width: 275px;
+        margin: 0 .5rem 1rem .5rem;
+    }
+    /* SKILLS-ABOUT */
+    /* Aumento el ancho de los contenedores. */
+    .skills-none,
+    .about-none{
+        width: 425px;
+    }
+    /* Aumento el padding vertical y acerco los contenedores. */
+    .skills-none{
+        padding: 5rem 0;
+        margin-right: -15rem;
+    }
+    /* Aumento el espacio entre el titulo y los iconos. */
+    .skills__iconos-none{
+        margin-top: 1.5rem;
+    }
+    /* Aumento el espacio entre el parrafo con el titulo y el ancla.  */
+    .about-none p{
+        margin: 1rem 0 4.5rem 0;
+    }
+    /* FORMULARIO-CONTACT */
+    /* Aumento la altura del container general del formulario con contacto. */
+    .form__none{
+        padding: 5.5rem 0;
+    }
+    /* Disminuyo los padding laterales del formulario para agrandar el tamanio del mismo. */
+    .form__container{
+        padding: 0 1rem;
+        width: 525px;
+    }
+    /* Ajusto el tamanio de los inputs del form. */
+    .form__container input{
+        padding: .9rem 0 .9rem .5rem;
+        margin-bottom: 1.1rem;
+    }
+}
+
+/*
+- NORMALIZE
+- INGLES/ESPANOL
+- EJECUTA LA IDEA DEL ENLACE PARA LA VERSION SPANISH.
+- APLICA TRANSFORM A LOS BOTONES
+- REVISION GENERAL DEL CODIGO
+*/
+
+
+
+
+
