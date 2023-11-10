@@ -25,7 +25,6 @@ html{
 body{
     background-color: var(--purple-light);
     font-family: var(--font-sans-serif);
-    /* overflow-x: hidden; */
 }
 
 
@@ -38,7 +37,7 @@ body{
 
 header{
     height: 100vh;
-    padding-top: 5rem;
+    padding: 4rem 0 0 0;
 }
 
 
@@ -161,7 +160,6 @@ ul{
     border: .5rem solid var(--gray-soft-light);
     display: block;
     margin: 0 auto .5rem auto;
-
 }
 /* Hago flexible al div que contiene el h1, p, a. Lo trabajo como columna y lo centro  */
 .header__text{
@@ -173,7 +171,7 @@ ul{
 .header__text h1{
     font-size: 3.2rem;
     color: var(--purple-dark);
-    margin-bottom: 1rem;
+    margin: 1rem 0 1rem 0;
 }
 /* Hago bajar al span del h1 */
 .header__text span{
@@ -187,7 +185,6 @@ ul{
 /* Le doy estilo al p del header */
 .header__text p{
     margin: .7rem 0 1.5rem 0;
-    /* color: var(--purple-dark); */
     color: var(--dark);
     font-weight: 600;
     font-size: 1.2rem;
@@ -351,7 +348,6 @@ ul{
     flex-flow: column;
     padding: 2rem 2.5rem 1rem 2.5rem;
     width: 365px;
-    /* max-width: 500px; */
 }
 /* Estilos a los inputs */
 .form__container input{
@@ -361,7 +357,7 @@ ul{
     background-color: var(--gray-soft-light);
     border-radius: .5rem;
     caret-color: var(--purple-dark);
-    color: var(--purple-dark);
+    color: var(--dark);
 }
 /* Estilos al boton que es un input tipo submit. */
 .form__container input[type="submit"]{
@@ -371,10 +367,12 @@ ul{
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .1rem;
+    cursor: pointer;
 }
 /* Estoy quitando el outline que aparece a hacer click en el input. */
-.form input:focus{
+.form__container input:focus{
     outline: none;
+    background-color: var(--blue-soft-light);
 }
 
 /* HAGO INVISIBLE EL FORM - FOOTER DEL 768PX */
