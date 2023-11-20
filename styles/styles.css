@@ -172,7 +172,7 @@ ul{
     font-size: 3.2rem;
     color: var(--purple-dark);
     margin: 1rem 0 1rem 0;
-    color: red;
+    /* color: red; */
 }
 /* Hago bajar al span del h1 */
 .header__text span{
@@ -1003,6 +1003,7 @@ footer p{
 
 /*
 - NETLIFY
+- FORMULARIO
 - PESO DE LA IMG DEL HEADER
 - APLICA TRANSFORM A LOS BOTONES: 
     * La propiedad scale para simular la pulsacion del boton.
