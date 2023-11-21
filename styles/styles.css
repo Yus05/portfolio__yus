@@ -232,36 +232,19 @@ ul{
     gap: 1rem;
 
 }
-/* Estilos al contenedor de la img */
+/* Estilos al contenedor del portfolio */
 .porfolio__picture{
     width: 300px;
-    background-color: var(--gray-soft-light);
+    height: 350px;
+    border: thick double var(--purple);
     border-radius: 1rem;
     margin: 0 0 1.5rem 0;
-}
-/* Estilos a la img */
-.porfolio__picture img{
-    max-width: 100%;
-    height: auto;
-    border-radius: 1rem;
-    margin-bottom: 2rem;
-}
-/* Estilos al contenedor de los textos */
-.porfolio__text{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+
 }
-/* Estilos al titulo de los proyectos. */
-.porfolio__text h3{
-    padding: 0 0 1rem 0;
-    color: var(--purple-dark);
-}
-/* Estilos a la descripcion de los proyectos. */
-.porfolio__text p{
-    padding: 0 0 2rem 0;
-    color: var(--dark);
-}
+
 
 .skills__about-none{
     display: none;
@@ -1001,9 +984,8 @@ footer p{
 }
 
 /*
-- NETLIFY
-- FORMULARIO
-- PESO DE LA IMG DEL HEADER
+- VELOCIDAD DE LA WEB - PESO DE MIS IMG -> CAMBIA LAS IMG DE WORKS
+- MEMORIA DE LA WEB - SE CARGA EN EL PUNTO EN DONDE QUEDE.
 - APLICA TRANSFORM A LOS BOTONES: 
     * La propiedad scale para simular la pulsacion del boton.
 - CON LA PSEUDO-CLASE :TARGET PUEDO CREAR EL MODO DARK.
